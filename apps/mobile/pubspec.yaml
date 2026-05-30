@@ -1,0 +1,38 @@
+name: tsukiyomi
+description: Flutter client for the Tsukiyomi GBA ROM catalog API.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.3.3
+  curved_navigation_bar: ^1.0.6
+  dotted_border: ^2.1.0
+  url_launcher: ^6.3.1
+  device_apps: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Gtek
+      fonts:
+        - asset: assets/fonts/Gtek_Technology.ttf
+    - family: Mozart
+      fonts:
+        - asset: assets/fonts/MozartNbp-93Ey.ttf
+  assets:
+    - assets/bg.png
+    - assets/bg1.png
+    - assets/bg2.png
