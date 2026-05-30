@@ -11,6 +11,8 @@ npx vercel env add PUBLIC_API_URL production       # https://tsukiyomi-platform.
 
 Create a Turso database at https://turso.tech, then copy the database URL and auth token.
 
+**Demo mode:** If `TURSO_DATABASE_URL` is not set, the API uses an in-memory SQLite database on Vercel (data resets between cold starts). Set Turso env vars for persistent production data.
+
 After env vars are set, redeploy:
 
 ```bash

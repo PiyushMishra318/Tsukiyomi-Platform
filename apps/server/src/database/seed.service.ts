@@ -15,7 +15,7 @@ export class SeedService implements OnModuleInit {
     const count = await this.db.db.execute('SELECT COUNT(*) AS count FROM games');
     if (Number(count.rows[0].count) > 0) return;
 
-    const root = join(process.cwd());
+    const root = join(__dirname, '..', '..');
     const names = JSON.parse(
       readFileSync(join(root, 'GBA_Roms_Names.json'), 'utf8'),
     ).Name as string[];

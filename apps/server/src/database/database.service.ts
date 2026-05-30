@@ -13,10 +13,21 @@ export class DatabaseService implements OnModuleInit {
   constructor(private readonly config: ConfigService) {}
 
   async onModuleInit() {
-    const url =
-      this.config.get<string>('TURSO_DATABASE_URL') ??
-      this.config.get<string>('DATABASE_URL') ??
-      'file:./data/tsukiyomi.db';
+    const tursoUrl = this.config.get<string>('TURSO_DATABASE_URL');
+    const databaseUrl = this.config.get<string>('DATABASE_URL');
+    const onVercel = process.env.VERCEL === '1';
+
+    let url: string;
+    if (tursoUrl) {
+      url = tursoUrl;
+    } else if (databaseUrl) {
+      url = databaseUrl;
+    } else if (onVercel) {
+      // Ephemeral demo fallback when Turso is not configured on Vercel.
+      url = ':memory:';
+    } else {
+      url = 'file:./data/tsukiyomi.db';
+    }
 
     if (url.startsWith('file:')) {
       const filePath = url.replace(/^file:/, '');
