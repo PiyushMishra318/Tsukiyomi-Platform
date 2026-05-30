@@ -4,6 +4,10 @@
   "buildCommand": "cd apps/server && npm run build",
   "builds": [
     {
+      "src": "public/**",
+      "use": "@vercel/static"
+    },
+    {
       "src": "apps/server/api/index.ts",
       "use": "@vercel/node",
       "config": {

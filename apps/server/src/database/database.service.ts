@@ -26,12 +26,13 @@ export class DatabaseService implements OnModuleInit {
     if (tursoUrl) {
       url = tursoUrl;
       this.dbMode = 'turso';
+    } else if (onVercel) {
+      // Vercel has a read-only filesystem; never use local SQLite files here.
+      url = ':memory:';
+      this.dbMode = 'memory';
     } else if (databaseUrl) {
       url = databaseUrl;
       this.dbMode = url.includes(':memory:') ? 'memory' : 'file';
-    } else if (onVercel) {
-      url = ':memory:';
-      this.dbMode = 'memory';
     } else {
       url = 'file:./data/tsukiyomi.db';
       this.dbMode = 'file';

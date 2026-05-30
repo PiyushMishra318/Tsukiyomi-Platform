@@ -11,7 +11,10 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      ignoreEnvFile: process.env.VERCEL === '1',
+    }),
     DatabaseModule,
     AuthModule,
     UsersModule,
