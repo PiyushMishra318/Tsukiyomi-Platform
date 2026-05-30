@@ -1,21 +1,42 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { DatabaseService } from './database.service';
 
 @Injectable()
 export class SeedService implements OnModuleInit {
+  private readonly logger = new Logger(SeedService.name);
+
   constructor(
     private readonly db: DatabaseService,
     private readonly config: ConfigService,
   ) {}
 
+  private resolveDataRoot(): string | null {
+    const candidates = [
+      join(__dirname, '..', '..'),
+      join(process.cwd(), 'apps/server'),
+      process.cwd(),
+    ];
+
+    for (const dir of candidates) {
+      if (existsSync(join(dir, 'GBA_Roms_Names.json'))) return dir;
+    }
+
+    return null;
+  }
+
   async onModuleInit() {
     const count = await this.db.db.execute('SELECT COUNT(*) AS count FROM games');
     if (Number(count.rows[0].count) > 0) return;
 
-    const root = join(__dirname, '..', '..');
+    const root = this.resolveDataRoot();
+    if (!root) {
+      this.logger.warn('Seed JSON not found; skipping catalogue bootstrap.');
+      return;
+    }
+
     const names = JSON.parse(
       readFileSync(join(root, 'GBA_Roms_Names.json'), 'utf8'),
     ).Name as string[];
