@@ -4,10 +4,6 @@
   "buildCommand": "cd apps/server && npm run build",
   "builds": [
     {
-      "src": "public/**",
-      "use": "@vercel/static"
-    },
-    {
       "src": "apps/server/api/index.ts",
       "use": "@vercel/node",
       "config": {
@@ -29,12 +25,11 @@
       "dest": "apps/server/Images/$1"
     },
     {
-      "src": "/",
-      "dest": "/public/index.html"
+      "handle": "filesystem"
     },
     {
-      "src": "/(.*\\.(html|css|js|ico|png|jpg|svg|txt|webmanifest))",
-      "dest": "/public/$1"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }

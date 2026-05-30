@@ -9,8 +9,13 @@ export type JsonValue = string | number | boolean | null | JsonValue[] | { [key:
 @Injectable()
 export class DatabaseService implements OnModuleInit {
   private client!: Client;
+  private dbMode: 'turso' | 'memory' | 'file' = 'file';
 
   constructor(private readonly config: ConfigService) {}
+
+  getMode(): string {
+    return this.dbMode;
+  }
 
   async onModuleInit() {
     const tursoUrl = this.config.get<string>('TURSO_DATABASE_URL');
@@ -20,23 +25,26 @@ export class DatabaseService implements OnModuleInit {
     let url: string;
     if (tursoUrl) {
       url = tursoUrl;
+      this.dbMode = 'turso';
     } else if (databaseUrl) {
       url = databaseUrl;
+      this.dbMode = url.includes(':memory:') ? 'memory' : 'file';
     } else if (onVercel) {
-      // Ephemeral demo fallback when Turso is not configured on Vercel.
       url = ':memory:';
+      this.dbMode = 'memory';
     } else {
       url = 'file:./data/tsukiyomi.db';
+      this.dbMode = 'file';
     }
 
-    if (url.startsWith('file:')) {
+    if (url.startsWith('file:') && !url.includes(':memory:')) {
       const filePath = url.replace(/^file:/, '');
       mkdirSync(dirname(filePath), { recursive: true });
     }
 
     this.client = createClient({
       url,
-      authToken: this.config.get<string>('TURSO_AUTH_TOKEN'),
+      authToken: tursoUrl ? this.config.get<string>('TURSO_AUTH_TOKEN') : undefined,
     });
 
     await this.migrate();

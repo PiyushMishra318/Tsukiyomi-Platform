@@ -1,15 +1,21 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { DatabaseService } from '../database/database.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly database: DatabaseService,
+  ) {}
 
   @Get('health')
   health() {
     return {
       status: 'ok',
       service: 'tsukiyomi-api',
+      version: '3.0.0',
+      database: this.database.getMode(),
       timestamp: new Date().toISOString(),
     };
   }
