@@ -133,17 +133,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _sectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+    return SizedBox(
       height: 100,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 40,
-            fontFamily: 'Mozart',
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+              fontFamily: 'Mozart',
+            ),
           ),
         ),
       ),
