@@ -2,20 +2,34 @@
   "version": 2,
   "installCommand": "cd apps/server && npm install",
   "buildCommand": "cd apps/server && npm run build",
-  "outputDirectory": "public",
-  "functions": {
-    "apps/server/api/index.ts": {
-      "includeFiles": "apps/server/dist/**,apps/server/GBA_Roms_Names.json,apps/server/GBA_Roms_Genres.json"
-    }
-  },
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/apps/server/api/index.ts"
+      "src": "public/**",
+      "use": "@vercel/static"
     },
     {
-      "source": "/Images/(.*)",
-      "destination": "/apps/server/Images/$1"
+      "src": "apps/server/api/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "apps/server/dist/**,apps/server/GBA_Roms_Names.json,apps/server/GBA_Roms_Genres.json"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/server/api/index.ts"
+    },
+    {
+      "src": "/Images/(.*)",
+      "dest": "apps/server/Images/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
