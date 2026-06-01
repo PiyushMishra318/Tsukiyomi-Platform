@@ -5,11 +5,7 @@
   "outputDirectory": "public",
   "functions": {
     "apps/server/api/index.ts": {
-      "includeFiles": [
-        "apps/server/dist/**",
-        "apps/server/GBA_Roms_Names.json",
-        "apps/server/GBA_Roms_Genres.json"
-      ]
+      "includeFiles": "apps/server/dist/**,apps/server/GBA_Roms_Names.json,apps/server/GBA_Roms_Genres.json"
     }
   },
   "rewrites": [
