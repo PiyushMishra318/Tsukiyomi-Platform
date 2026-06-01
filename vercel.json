@@ -25,14 +25,18 @@
       "dest": "apps/server/Images/$1"
     },
     {
+      "src": "/styles.css",
+      "dest": "/public/styles.css"
+    },
+    {
+      "src": "/theme.js",
+      "dest": "/public/theme.js"
+    },
+    {
       "handle": "filesystem"
     },
     {
       "src": "/",
-      "dest": "/public/index.html"
-    },
-    {
-      "src": "/(.*)",
       "dest": "/public/index.html"
     }
   ]
