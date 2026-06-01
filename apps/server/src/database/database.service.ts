@@ -20,7 +20,10 @@ export class DatabaseService implements OnModuleInit {
   async onModuleInit() {
     const tursoUrl = this.config.get<string>('TURSO_DATABASE_URL');
     const databaseUrl = this.config.get<string>('DATABASE_URL');
-    const onVercel = process.env.VERCEL === '1';
+    const onVercel =
+      process.env.VERCEL === '1' ||
+      process.env.VERCEL === 'true' ||
+      Boolean(process.env.VERCEL_ENV);
 
     let url: string;
     if (tursoUrl) {
@@ -38,7 +41,11 @@ export class DatabaseService implements OnModuleInit {
       this.dbMode = 'file';
     }
 
-    if (url.startsWith('file:') && !url.includes(':memory:')) {
+    if (
+      !onVercel &&
+      url.startsWith('file:') &&
+      !url.includes(':memory:')
+    ) {
       const filePath = url.replace(/^file:/, '');
       mkdirSync(dirname(filePath), { recursive: true });
     }
