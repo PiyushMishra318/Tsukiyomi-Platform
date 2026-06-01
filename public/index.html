@@ -4,193 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tsukiyomi Platform</title>
-  <meta name="description" content="Flutter GBA catalogue client and NestJS API for browsing ROM metadata, favorites, and emulator launch." />
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #0b0f17;
-      --surface: #121826;
-      --border: #1e293b;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --accent: #818cf8;
-      --accent-hover: #a5b4fc;
-      --ok: #34d399;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, #1e1b4b 0%, var(--bg) 55%);
-      color: var(--text);
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.6;
-    }
-    main {
-      flex: 1 0 auto;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 2rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-    .lead {
-      font-size: 1.125rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      max-width: 54ch;
-    }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-    }
-    a.btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.65rem 1.1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-    }
-    a.btn-primary {
-      background: var(--accent);
-      color: #0f172a;
-    }
-    a.btn-primary:hover { background: var(--accent-hover); }
-    a.btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    a.btn-secondary:hover { border-color: var(--accent); color: var(--accent-hover); }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .card h2 {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-    .card ul { list-style: none; }
-    .card li {
-      padding: 0.35rem 0;
-      font-size: 0.9375rem;
-      color: var(--muted);
-    }
-    .card li code {
-      font-family: ui-monospace, monospace;
-      font-size: 0.8125rem;
-      color: var(--text);
-      background: var(--bg);
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
-    }
-    #health-status { color: var(--muted); font-size: 0.875rem; }
-    #health-status.ok { color: var(--ok); }
-    footer {
-      flex-shrink: 0;
-      border-top: 1px solid var(--border);
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-  </style>
+  <meta name="description" content="Flutter GBA catalogue client and NestJS API." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=DM+Sans:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="theme-tsukiyomi portfolio-designed landing-page">
+  <div class="bg-animation" aria-hidden="true"></div>
+  <header class="header landing-hero">
+    <div class="header__top">
+      <a class="header__brand" href="https://piyushm.dev">piyushm.dev</a>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9789;</span>
+      </button>
+    </div>
+    <div class="header__inner">
+      <span class="badge">Early release · Flutter + NestJS</span>
+      <h1>Tsukiyomi Platform</h1>
+      <p class="lead">GBA ROM catalogue, favorites, and emulator launch — Flutter client plus JWT-backed NestJS API.</p>
+      <div class="hero-cta links">
+        <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-secondary" href="/api/auth/health">API health</a>
+        <a class="btn btn-secondary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform/releases/latest" id="apk-link">Download APK</a>
+      </div>
+      <p id="health-status" aria-live="polite"></p>
+    </div>
+  </header>
   <main class="page-main">
-    <span class="badge">Early release</span>
-    <h1>Tsukiyomi Platform</h1>
-    <p class="lead">
-      A Flutter Android client and NestJS API for browsing GBA ROM metadata,
-      managing favorites, and launching your emulator — with local JWT auth.
-    </p>
-
-    <div class="links">
-      <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener">View on GitHub</a>
-      <a class="btn btn-secondary" href="/api/auth/health" id="health-link">API health</a>
-      <a class="btn btn-secondary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform/releases/latest" target="_blank" rel="noopener" id="apk-link">Download APK</a>
+    <div class="feature-grid">
+      <div class="feature-tile"><strong>Catalogue API</strong><span>JWT-protected ROM metadata routes.</span></div>
+      <div class="feature-tile"><strong>Favorites</strong><span>Sync picks between Flutter and API.</span></div>
+      <div class="feature-tile"><strong>Emulator launch</strong><span>Hand off to your GBA player.</span></div>
     </div>
-
-    <p id="health-status" aria-live="polite"></p>
-
-    <div class="card">
-      <h2>API endpoints</h2>
-      <ul>
-        <li><code>GET /api/auth/health</code> — service status</li>
-        <li><code>POST /api/auth/register</code> — create account</li>
-        <li><code>POST /api/auth/login</code> — obtain JWT</li>
-        <li><code>GET /api/games</code> — ROM catalogue</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Stack</h2>
-      <ul>
-        <li>Flutter mobile client (Android)</li>
-        <li>NestJS serverless API on Vercel</li>
-        <li>SQLite / Turso (libSQL) + bcrypt + JWT</li>
-      </ul>
-    </div>
+    <div class="card" style="margin-top:1.25rem"><h2>API endpoints</h2><ul>
+      <li><code>GET /api/auth/health</code></li>
+      <li><code>POST /api/auth/register</code></li>
+      <li><code>POST /api/auth/login</code></li>
+      <li><code>GET /api/games</code></li>
+    </ul></div>
+    <div class="card"><h2>Stack</h2><ul>
+      <li>Flutter Android client</li>
+      <li>NestJS on Vercel</li>
+      <li>Turso / libSQL + JWT</li>
+    </ul></div>
   </main>
-
-  <footer class="site-footer">
-    MIT © 2026 · <a href="https://piyushm.dev" target="_blank" rel="noopener">piyushm.dev</a>
-    · <a href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener">View on GitHub</a>
-  </footer>
-
+  <footer class="site-footer footer"><p>MIT © 2026 · <a href="https://piyushm.dev">piyushm.dev</a> · <a href="https://github.com/PiyushMishra318/Tsukiyomi-Platform">GitHub</a></p></footer>
   <script>
-    fetch('/api/auth/health')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var el = document.getElementById('health-status');
-        el.textContent = 'API: ' + (d.status || 'unknown') + (d.database ? ' · db: ' + d.database : '');
-        el.classList.add('ok');
-      })
-      .catch(function () {
-        document.getElementById('health-status').textContent = 'API health check unavailable — demo uses in-memory DB on Vercel.';
-      });
-
-    fetch('https://api.github.com/repos/PiyushMishra318/Tsukiyomi-Platform/releases/latest')
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (rel) {
-        if (rel && rel.html_url) {
-          document.getElementById('apk-link').href = rel.html_url;
-        }
-      })
-      .catch(function () {});
+    fetch('/api/auth/health').then(r=>r.json()).then(d=>{var e=document.getElementById('health-status');e.textContent='API: '+(d.status||'?')+(d.database?' · db: '+d.database:'');e.classList.add('ok')}).catch(()=>{document.getElementById('health-status').textContent='API health unavailable on this deploy.'});
+    fetch('https://api.github.com/repos/PiyushMishra318/Tsukiyomi-Platform/releases/latest').then(r=>r.ok?r.json():null).then(rel=>{if(rel&&rel.html_url)document.getElementById('apk-link').href=rel.html_url}).catch(()=>{});
   </script>
+  <script src="/theme.js"></script>
 </body>
 </html>
