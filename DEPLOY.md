@@ -18,3 +18,7 @@ After env vars are set, redeploy:
 ```bash
 npx vercel --prod
 ```
+
+## piyushm.dev subpath (`/products/tsukiyomi`)
+
+To serve this deployment at **https://piyushm.dev/products/tsukiyomi/** (proxy on the portfolio Vercel project, stay on `piyushm.dev`), see **[docs/piyushm-dev-subpath.md](docs/piyushm-dev-subpath.md)** for portfolio `vercel.json` rewrites/redirects and setting `PUBLIC_API_URL` to `https://piyushm.dev/products/tsukiyomi` when the API should be reached through that subpath.
