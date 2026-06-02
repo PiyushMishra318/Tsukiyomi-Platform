@@ -1,6 +1,6 @@
 # Hosting Tsukiyomi on piyushm.dev (`/products/tsukiyomi`)
 
-Serve the Tsukiyomi Platform Vercel deployment at **https://piyushm.dev/products/tsukiyomi/** while keeping the browser on `piyushm.dev` (no redirect to `*.vercel.app`).
+Serve the Tsukiyomi Vercel deployment at **https://piyushm.dev/products/tsukiyomi/** while keeping the browser on `piyushm.dev` (no redirect to `*.vercel.app`).
 
 This repo’s landing page uses **relative** asset URLs (`styles.css`, `theme.js`) so they resolve correctly on both:
 
