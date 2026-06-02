@@ -41,11 +41,7 @@ Add or merge the following into the **portfolio** project’s `vercel.json` (not
 
 Deploy the portfolio project after saving.
 
-**Manual steps if the portfolio repo is not in this workspace:**
-
-1. Open the `piyushm.dev` Vercel project (portfolio site).
-2. Add the `rewrites` and `redirects` blocks above to that project’s `vercel.json`, or paste equivalent rules in the Vercel dashboard under **Redirects** / **Rewrites**.
-3. Redeploy the portfolio site.
+The portfolio site lives in **`my-profile/portfolio`** (sibling of this repo under `Documents/GitHub/`). That repo’s `vercel.json` should include the `rewrites` and `redirects` above merged with any existing portfolio routes.
 
 ## 2. Tsukiyomi Vercel project (this repo)
 
