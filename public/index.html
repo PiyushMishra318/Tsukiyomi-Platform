@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tsukiyomi Platform</title>
-  <meta name="description" content="GBA ROM catalogue, favorites sync, and emulator launch — Flutter client with JWT-backed NestJS API." />
+  <title>Tsukiyomi — Your GBA library, moonlit</title>
+  <meta name="description" content="Browse your Game Boy Advance catalogue, save favorites, pick up where you left off, and launch into your emulator — on Android." />
   <meta name="theme-color" content="#05070c" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,96 +25,93 @@
     </div>
 
     <div class="header__inner hero-copy">
-      <p class="eyebrow">月 · GBA catalogue platform</p>
-      <span class="badge">Early release · Flutter + NestJS</span>
+      <p class="eyebrow">月 · Your GBA library</p>
+      <span class="badge">Android app · Early release</span>
       <h1><span class="h1-accent">Tsukiyomi</span> Platform</h1>
-      <p class="lead">Browse ROM metadata, sync favorites across devices, and launch your GBA player — one Flutter client, one JWT-backed API.</p>
+      <p class="lead">Your Game Boy Advance collection, organized under moonlight — browse by genre, keep favorites in sync, return to recent plays, and jump straight into your emulator.</p>
       <div class="hero-cta links">
-        <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-        <a class="btn btn-secondary" href="/api/auth/health">API health</a>
-        <a class="btn btn-secondary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform/releases/latest" id="apk-link">Download APK</a>
+        <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform/releases/latest" id="apk-link">Download for Android</a>
+        <a class="btn btn-secondary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
-      <p id="health-status" class="health-line" aria-live="polite"></p>
     </div>
 
-    <aside class="hero-panel hero-panel--terminal" aria-labelledby="hero-panel-title">
-      <p id="hero-panel-title" class="hero-panel__label">Live route map</p>
-      <pre class="hero-panel__content"><code>GET  /api/games
-POST /api/auth/login
-JWT  favorites · Turso</code></pre>
+    <aside class="hero-panel hero-panel--library" aria-labelledby="hero-panel-title">
+      <p id="hero-panel-title" class="hero-panel__label">Tonight&apos;s shelf</p>
+      <ul class="hero-panel__library" aria-hidden="true">
+        <li class="hero-panel__row">
+          <span class="hero-panel__thumb" aria-hidden="true"></span>
+          <span class="hero-panel__meta">
+            <strong>Pokémon Emerald</strong>
+            <span>RPG · In your history</span>
+          </span>
+          <span class="hero-panel__chip">Play</span>
+        </li>
+        <li class="hero-panel__row">
+          <span class="hero-panel__thumb hero-panel__thumb--alt" aria-hidden="true"></span>
+          <span class="hero-panel__meta">
+            <strong>Metroid Fusion</strong>
+            <span>Action · Favorited</span>
+          </span>
+          <span class="hero-panel__chip hero-panel__chip--muted">Resume</span>
+        </li>
+        <li class="hero-panel__row">
+          <span class="hero-panel__thumb hero-panel__thumb--warm" aria-hidden="true"></span>
+          <span class="hero-panel__meta">
+            <strong>Fire Emblem</strong>
+            <span>Strategy · Recommended</span>
+          </span>
+          <span class="hero-panel__chip">Browse</span>
+        </li>
+      </ul>
       <div class="hero-panel__glow" aria-hidden="true"></div>
     </aside>
   </header>
 
   <main class="page-main">
-    <p class="section-title">What you get</p>
+    <p class="section-title">Built for players</p>
     <div class="feature-grid">
       <article class="feature-tile feature-tile--1">
         <span class="feature-tile__glyph" aria-hidden="true">01</span>
-        <strong>Catalogue API</strong>
-        <span>JWT-protected ROM metadata routes with genre and cover lookups.</span>
+        <strong>Browse the catalogue</strong>
+        <span>Explore a curated GBA library with genres, covers, and details — find what to play next without digging through folders.</span>
       </article>
       <article class="feature-tile feature-tile--2">
         <span class="feature-tile__glyph" aria-hidden="true">02</span>
-        <strong>Favorites</strong>
-        <span>Sync picks between the Flutter client and the API in one place.</span>
+        <strong>Favorites that follow you</strong>
+        <span>Heart the games you love and keep your picks synced to your account, ready on your phone whenever you open the app.</span>
       </article>
       <article class="feature-tile feature-tile--3">
         <span class="feature-tile__glyph" aria-hidden="true">03</span>
-        <strong>Emulator launch</strong>
-        <span>Hand off to your GBA player with paths resolved from the catalogue.</span>
+        <strong>Pick up where you left off</strong>
+        <span>Recent plays and recommendations greet you on the home screen so you can jump back into a session in seconds.</span>
       </article>
-    </div>
-
-    <div class="main-columns">
-      <section class="card card--api" aria-labelledby="api-heading">
-        <h2 id="api-heading">API endpoints</h2>
-        <ul class="endpoint-list">
-          <li><code>GET</code> <span>/api/auth/health</span></li>
-          <li><code>POST</code> <span>/api/auth/register</span></li>
-          <li><code>POST</code> <span>/api/auth/login</span></li>
-          <li><code>GET</code> <span>/api/games</span></li>
-        </ul>
-      </section>
-      <section class="card card--stack" aria-labelledby="stack-heading">
-        <h2 id="stack-heading">Stack</h2>
-        <ul class="stack-list">
-          <li><span class="stack-tag">Client</span> Flutter Android</li>
-          <li><span class="stack-tag">API</span> NestJS on Vercel</li>
-          <li><span class="stack-tag">Data</span> Turso / libSQL + JWT</li>
-        </ul>
-      </section>
+      <article class="feature-tile feature-tile--4">
+        <span class="feature-tile__glyph" aria-hidden="true">04</span>
+        <strong>Launch into your emulator</strong>
+        <span>Open your GBA player from the app — start NeoEmu when it&apos;s installed, or get guided to install it if you haven&apos;t yet.</span>
+      </article>
     </div>
 
     <div class="cta-band">
       <div>
-        <strong>Ship your library under moonlight</strong>
-        <p>Clone the repo, point the Flutter app at this deployment, and sync favorites in minutes.</p>
+        <strong>Ready to play under moonlight?</strong>
+        <p>Install the Android app, sign in with your phone number, and your library is waiting.</p>
       </div>
-      <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform" target="_blank" rel="noopener noreferrer">Get started</a>
+      <a class="btn btn-primary" href="https://github.com/PiyushMishra318/Tsukiyomi-Platform/releases/latest" id="apk-link-cta">Get the app</a>
     </div>
   </main>
 
   <footer class="site-footer footer">
-    <p>MIT © 2026 · <a href="https://piyushm.dev">piyushm.dev</a> · <a href="https://github.com/PiyushMishra318/Tsukiyomi-Platform">GitHub</a></p>
+    <p>MIT © 2026 · <a href="https://piyushm.dev">piyushm.dev</a> · <a href="https://github.com/PiyushMishra318/Tsukiyomi-Platform">GitHub</a> · <a href="https://github.com/PiyushMishra318/Tsukiyomi-Platform#readme">For developers</a></p>
   </footer>
 
   <script>
-    fetch("/api/auth/health")
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var el = document.getElementById("health-status");
-        el.textContent = "API: " + (d.status || "?") + (d.database ? " · db: " + d.database : "");
-        el.classList.add("ok");
-      })
-      .catch(function () {
-        document.getElementById("health-status").textContent =
-          "API health available when served with production API routes.";
-      });
     fetch("https://api.github.com/repos/PiyushMishra318/Tsukiyomi-Platform/releases/latest")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (rel) {
-        if (rel && rel.html_url) document.getElementById("apk-link").href = rel.html_url;
+        if (!rel || !rel.html_url) return;
+        var links = document.querySelectorAll("#apk-link, #apk-link-cta");
+        for (var i = 0; i < links.length; i++) links[i].href = rel.html_url;
       })
       .catch(function () {});
   </script>
