@@ -1,4 +1,4 @@
-# Author's Note
+# Author's Note (NOT AI GENERATED)
 
 > This was a project we (me and [papermechanics](https://github.com/papermechanics)) made for college. 
 
