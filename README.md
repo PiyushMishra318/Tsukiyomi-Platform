@@ -1,3 +1,13 @@
+# Author's Note
+
+> This was a project we (me and @papermechanics) made for college. 
+> The name [Tsukiyomi](https://en.wikipedia.org/wiki/Tsukuyomi_(disambiguation)) is a dumb reference to a [Naruto](https://en.wikipedia.org/wiki/Naruto). I still think its kinda cool.
+> Anyway I plan to make this fully local i.e the catalogue part would allow you to search the games sure but supplying the game files won't be done by the app. You will be able to get recommendations using the same recommendation engine we were using that was the core of the project the TOP-N ranker.
+> Some UI changes to make it look more uptodate. At the point of creation we were heavily inspired by Spotify's UI.
+> At the point of creation the legality of this thing was dubious at best. So here's a [Disclaimer](./DISCLAIMER.Md) (This is AI generted cz I ain't a lawyer)
+> All contributions or suggestion for this project are welcomed and appreciated.
+> CIAO.
+
 # Tsukiyomi
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
